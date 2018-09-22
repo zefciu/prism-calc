@@ -1,0 +1,74 @@
+#:kivy 1.10.0
+
+<PrismCalcWidget>:
+    BoxLayout:
+        size: root.width, root.width / 2
+        orientation: 'horizontal'
+        EyeWidget:
+            size_hint: 0.5, 1
+        EyeWidget:
+            size_hint: 0.5, 1
+
+
+
+<EyeWidget>:
+    id: eye_widget
+    size_hint: 1, None
+    size: self.width, self.width
+    pos_hint: {'center': (.5, .5)}
+    canvas: 
+        Color:
+            rgb: 1, 1, 1
+        Line:
+            circle: self.center_x, self.center_y, self.width * .3
+        Color:
+            rgb: 0, 1, 1
+        Line:
+            points: self.triangle_points
+            width: 3
+
+    Button:
+        id: y_plus
+        text: "+"
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': .45, 'y': .65}
+
+    Button:
+        id: y_minus
+        text: "-"
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': .45, 'y': .25}
+
+    Button:
+        id: x_plus
+        text: "+"
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': .65, 'y': .45}
+
+    Button:
+        id: x_minus
+        text: "-"
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': .25, 'y': .45}
+
+    Button:
+        id: reset
+        text: "0"
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': .45, 'y': .45}
+
+    Label:
+        text: "x: " + str(self.parent.x_value)
+        pos_hint: {'x': .1, 'y': .5}
+
+    Label:
+        text: "y: " + str(self.parent.y_value)
+        pos_hint: {'x': .1, 'y': .45}
+
+    Label:
+        text: "base: " + str(self.parent.base)
+        pos_hint: {'x': .1, 'y': .4}
+
+    Label:
+        text: "value: " + str(self.parent.value)
+        pos_hint: {'x': .1, 'y': .35}
